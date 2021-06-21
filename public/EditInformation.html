@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+<script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+</script>
+
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  background-color: rgb(189, 185, 185);
+}
+
+h3 {
+  text-align: center;
+}
+
+.bgimg-1 {
+  position: relative;
+  opacity: 0.65;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-image: url("images/3.jpg");
+  height: 30%;
+
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+.information {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+a img {
+  width: 30px;
+  height: 30px;
+}
+
+a { 
+    color: blue;
+}
+a:hover {
+  color: blueviolet;
+}
+
+.link {
+    position: relative;
+    border: 1px solid black;
+    top: 18px;
+    width: 200px;  
+    height: 50px;  
+    display: inline-block;
+    background-color: white;
+}
+
+.link:hover {
+  border: 3px solid rgb(255, 255, 255);
+}
+
+h1 {
+  position: relative;
+  left: 30px;
+}
+
+.InformationChangePlace {
+    float: right;
+    position: relative;
+    right: 50%;
+    border: 1px solid rgb(85, 84, 84);
+    width: 420px;
+    height: 480px;
+    margin: auto;
+    top: 30px;
+    background-color: rgb(207, 204, 204);
+}
+
+.PasswordChangePlace {
+    float: left;
+    position: relative;
+    left: 50%;
+    border: 1px solid rgb(85, 84, 84);
+    width: 420px;
+    height: 480px;
+    margin: auto;
+    top: 30px;
+    background-color: rgb(207, 204, 204);
+    text-align: center;
+}
+
+.err_msg{ color:red;}
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con 
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(gifs/1.gif) center no-repeat #fff;
+}
+</style>
+</head>
+<body>
+<div class="se-pre-con"></div>
+<header class="bgimg-1">
+    <span><img src="images/logo.png" alt="logo"></span>
+</header>
+
+<section>
+  <div ng-controller="InfoProcessCtrl">
+    <div class="InformationChangePlace">
+      <form id="ChangeIn">
+        <div class="information" id="infoProcess">
+          <h3>Your profile</h3>
+          <img width="100" ng-src="{{current_avatar}}" alt = "Profile picture" /></br>
+          <input type="file" id="file" name="img" accept="image/*" />
+          <p>User ID: {{user_id}}</p>
+          <label ng-hide="error_info" id="email_msg" class="err_msg"></label>
+          <input ng-click="toggle_info()" placeholder="Email" type="text" id="email" name="email" size="30" ng-value="current_email"/>
+          <p><input ng-click="submit_info()" value="Change Information" name="ChangeIn" type="submit"></p>
+          <p>Back to <a href="Student.html">Home</a> Page.</p>
+        </div>
+      </form>
+    </div>
+
+    <div class="PasswordChangePlace">
+      <form id="ChangePa">
+        <div class="information" id="passProcess">
+          <h3>Change your password</h3>
+          <label ng-hide="error_pass" id="pswd_msg" class="err_msg"></label>
+          <p><input ng-click="toggle_pass()" placeholder="New Password" type="password" id="password" name="password" size="30"/></p>
+          <label id="pswdr_msg" class="err_msg"></label>
+          <p><input ng-click="toggle_pass()" placeholder="Confirm password" type="password" name="pwdr" size="30" /></p>
+          <p><input ng-click="submit_pass()" value="Change Password" name="ChangePa" type="submit"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<script type="text/javascript" src="JSs/Validate.js"> </script>  
+
+<script type="module"  src = "JSs/ChangeProcess.js" ></script>
+<script type="module"  src = "JSs/ProfileChange.js" ></script>
+<script type="module"  src = "JSs/PasswordChange.js" ></script>
+
+</body>
+</html>

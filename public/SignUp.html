@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<Title>Signup Page </Title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+</script>
+
+<style> 
+
+body {
+  background-color: rgb(189, 185, 185);
+}
+
+.div1 {
+    border: 1px solid rgb(85, 84, 84);
+    width: 420px;
+    height: 680px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: rgb(207, 204, 204);
+}
+
+b{
+  position: absolute;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+h2{
+  text-align: center;
+}
+
+tr {
+  height: 27px;
+}
+table,tr,td {
+  border-collapse: collapse;
+}
+.err_msg{ color:red;}
+
+input[type="text"],[type="password"]{ 
+  padding: 10px 3px; 
+  line-height: 3px; 
+}
+
+.submit_buttom:hover{
+  border: 3px solid rgb(83, 83, 83);
+  color: rgb(83, 83, 83);
+}
+
+.div1:hover{
+  border: 3px solid rgb(0, 0, 0);
+}
+
+a { 
+    color: blue;
+}
+
+a:hover {
+  color: blueviolet;
+}
+
+.no-js #loader { display: none;  }
+    .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+    .se-pre-con 
+    {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(gifs/1.gif) center no-repeat #fff;
+    }
+</style>
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="JSs/Validate.js"> </script>  
+</head>
+
+<body>
+  <div class="se-pre-con"></div>
+  <form id="SignUp" method="post">
+  <div ng-app="myApp" ng-controller="processCtrl" id="dataProcess">
+    <div class="div1">
+      <img src="images/logo.png" alt="logo">
+      <h2> Create your account here </h2>
+
+        <table>
+          <tr><td colspan="2"><label id="email_msg" class="err_msg"></label></td></tr>
+          <tr><td colspan="2"> <input placeholder="Email" type="text" id="email" name="email" size="30" /></td> </tr>
+          
+          <tr>
+            <td><label id="fname_msg" class="err_msg"></label></td> 
+            <td><label id="lname_msg" class="err_msg"></label></td>
+          </tr>          
+          <tr>
+            <td><input placeholder="First name" type="text" id="fname" name="fname" size="12" /></td> 
+            <td><input placeholder="Last name" type="text" id="lname" name="lname" size="12" /></td>
+          </tr>          
+          
+          <tr><td colspan="2"><label id="pswd_msg" class="err_msg"></label></td></tr>
+          <tr><td colspan="2"> <input placeholder="Password" type="password" id="password" name="password" size="30"/></td></tr>
+          
+          <tr><td colspan="2"><label id="pswdr_msg" class="err_msg"></label></td></tr>            
+          <tr><td colspan="2"> <input placeholder="Confirm password" type="password" name="pwdr" size="30" /></td></tr>    
+          
+          <tr><td></td><td><label id="photo_msg" class="err_msg"></label></td></tr>            
+          <tr><td>Avatar: </td><td> <input type="file" id="file" name="img" accept="image/*" /></td></tr>  
+
+          <tr><td></td><td><label id="select_msg" class="err_msg"></label></td></tr>            
+          <tr>
+            <td>Are you a: </td>
+            <td> 
+              <input type="radio" id="student" name="option" value="student" /> <label for="student">student</label> 
+              <input type="radio" id="teacher" name="option" value="teacher" /> <label for="teacher">teacher</label>
+            </td>
+          </tr>  
+
+        </table>
+
+        <p><input class="submit_buttom" value="create" name="create" type="submit"> <input  class="submit_buttom" type="reset" name="Reset" value="Reset" /></p>
+
+        <p>Already have an account? Go back <a href="index.html">Home</a> Page</p>
+
+
+    </div>
+  </div>
+
+  </form>
+  <script type = "text/javascript"  src = "JSs/SignUp-r.js" ></script>
+  <script type = "text/javascript"  src = "JSs/SignUpProcess.js" ></script>
+  <script type = "module"  src = "JSs/SignUpData.js" ></script>
+  
+</body>
+</html>

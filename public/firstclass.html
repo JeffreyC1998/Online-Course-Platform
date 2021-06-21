@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <Title>Signup Page </Title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+   
+       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+    </script>
+
+
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+
+
+    <script defer src="/__/firebase/init.js?useEmulator=false"></script>
+    <script type="text/javascript" src="JSs/Validate.js"> </script>  
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="teachersPet.css">
+  </head>
+  <body class="bg">
+    <div class="se-pre-con"></div>
+    <div class="title">
+        <h1>Create your Class</h1>
+    </div>
+    <section class="center">
+        <img src="images/logo.png" alt="logo">
+        <!--ng-controller="Fclass" id="firstClassData"-->
+        <div>
+            <form id="firstClassData" method="post">
+                    <table id="maintable">
+                        <tr><td colspan="2"><label id="class_msg" class="err_msg"></label></td></tr>
+                        <tr><td style="width: 300px;"> <input placeholder="Class Name (Cannot be changed)" type="text" id="Cname" name="Cname" size="31" /></td> </tr>
+                        <tr><td colspan="2"><label id="phone_msg" class="err_msg"></label></td></tr>
+                        <tr><td style="width: 300px;"> <input placeholder="Phone xxx-xxx-xxxx" type="text" id="Pnum" name="Pnum" size="31" /></td> </tr>
+                        <tr><td style="width: 300px;"> <textarea placeholder="Your Credentials (optional)" name="credent" rows="5" cols="34"></textarea></td></tr>
+                    </table>
+                    <p><input class="submit_buttom" value="SignUp" name="SignUp" type="submit"> <input  class="submit_buttom" type="reset" name="Reset" value="Reset" /></p>    
+            </form>
+            <p>Return to Teacher Home page click<a href="TeacherView.html">here</a></p>
+        </div>
+    </section>
+
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+        
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    
+
+        <!-- Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+         <!--validation and controller set up-->
+         <script src="JSs/firstclass-r.js"></script>
+        <script type="module" src="JSs/firstclass.js"></script>
+
+
+  </body>
+</html>

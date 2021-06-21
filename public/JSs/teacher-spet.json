@@ -1,0 +1,13 @@
+
+{
+    "type": "service_account",
+    "project_id": "teacher-spet",
+    "private_key_id": "b13e340d74e07bdaf0cada3394cbc15eef98d95a",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDJwRaI7xTkvDbT\n3ClhbC3F+3jbu4uzHtSxTAO2SFV9AJLsr+dT+O3ZuhTFx5GwKRJCfMQCrw0o2ao7\nzW8qUOuAUDH3UYDEwwo6KFpMTchBDTYlir24pfAQvlNQGbMRO0suYBpsBR2YUKY8\nS7TXf8MIhX9UyqYaFVPzuYfVmWhQhSkCAceoNcJ2lvnRLxB+a4JcGtxuiz4yWzD0\ni1AYgIKsJUdvBg0vZTClS6bGUe2m8XT+PUqe4cQkZkKSQTznobh+BVEyZsj/KtCY\nuUEBtYWBaZqA3g8h+cn0jBDRIAH1YwZZDYgbUqU0IRyRraLrrHPrvc5wRC0x4yqt\nGHbPl8QBAgMBAAECggEACaCqX1noBfKC5p2XWQowyhrHW9ZOygla/jJDl05LWg/G\nyHDIryXDlTy/YugYC9oMjqEe/2oCvnk97x2ifOagpXO1WkBBlf6SrzMDNW9Hq5jN\nMEjhyyfE463ghDyhRd2fp21+7/Nzp3rqNMR/3gHb1VmLuZb0CsNhAkPrvmzwma6I\nmRkKHAs+K8itsgecfW6V+tOBllXetGIl0PxHee6cFywSVGCBuLhmM77kCvrdDJDm\ny23ylZOreOlJV57QkuqYTa4bY4lDRWrXw97kLxyVnlHJOZmV6pi7fj7lY43Fk593\nj8OfOwzBuw/a+08CzAiSRjai4qSBVCY36AWwmzmyewKBgQD5vJAlMxiNZRKg6Q81\nqyseVRf4zeKcjC5M38BYfPTUl8huY4AEafXDyT6wB9bvA1rZXLInA7bOvK37myh7\nywm8qb/Sm+hHpjKsggMc5DZgGrABOCMgPET7BPvmU3UwvJXUDt40NeCH8jBhUyIH\nUwR2EbzDCVVt9rl7ie2Ua6vgDwKBgQDO0HQtjb8/zHSM7aNqjwo2f8ZeA0lqEecY\nftX67HkL5sXkvJS4N/UhzXoaBYSCsJ3lQxCURr0FI0w0ZCZXJYLsfqo/CV5fsaXf\nerErqykpz623eeDb79qAOiTy8z8w/XOK/HI7olwuSifKZbJQK49lQnmhcS2kpF+A\nNp+e5Y8K7wKBgFeYPwr9OBBoMjeEZ5RQfGhAOo9HT8PPG3JVTPb8pTdoIaIufjmO\nHOjWTomZxlbBW31AGTC8CcPLxE6rJnD9T2YAOEsb6kYvUjjVxVe96CCfW7qhwRhO\na3eMUPqBrWoxy2+840121FF6rmOEsDvXb4omQIo8XN2cG4TsZQuZFIkbAoGBAL5t\nQgwP0GE2KLr6tNWRD55O2KAH9rkr8tWjM/PveSV0QBL1cRqOq6+MOzlqizCq3zgS\nIFnnKHRqo+g5rvPfHkYT+z4/qh4CvPChUDEdULGnABVIq7rXhyE6aHsrbqv1M0Zu\nW+B9BtO4hBrguOcItOhP5R65z4UhtK2hnif4x1URAoGBAOKaGgPEErykZd3r1oV/\nnfaORr3H9gjRepP9fj7uA0aMCVwyXGU9yjcdMcK/9m8X2Vw5aP7db8dXxq5EMk8A\nA0t/vq1ep5WsUg+ETv4T0/Powo5aQmJU395atGH/PvkhYGb02BxC0Nne1HqX8/vX\nu8pj1jzPCwibo2PML+h9BFzm\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-omptv@teacher-spet.iam.gserviceaccount.com",
+    "client_id": "101243771661688421117",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-omptv%40teacher-spet.iam.gserviceaccount.com"
+  }

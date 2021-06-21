@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+</script>
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" src="JSs/Validate.js"> </script>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  background-color:rgb(255, 255, 255);
+}
+
+.title {
+    text-align: center;
+    font-family: "Lucida Handwriting", Cursive;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bg {
+  /* The image used */
+  background-image: url("images/1.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center {
+    background-color: rgb(190, 190, 190,0.5);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    height: 50%;
+    width: 600px; 
+}
+.center:hover{
+    border: 3px solid rgb(0, 0, 0);
+}
+
+.submit_buttom:hover{
+    border: 3px solid rgb(83, 83, 83);
+    color: rgb(83, 83, 83);
+}
+#maintable{
+    border-collapse: collapse;
+    margin: auto;
+    padding: 10px;
+}
+
+section {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+tr {
+    height: 24px;
+}
+
+a { 
+    color: blue;
+}
+a:hover {
+  color: blueviolet;
+}
+.err_msg{ color:red;}
+
+input[type="text"],[type="password"]{ 
+  padding: 10px 3px; 
+  line-height: 3px; 
+}
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con 
+{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(gifs/1.gif) center no-repeat #fff;
+}
+
+</style>
+</head>
+<body class="bg">
+<div class="se-pre-con"></div>
+<div class="title">
+    <h1>Welcome to the Teacher's Pet</h1>
+    <h3>Ready for your courses?</h3>
+</div>
+<section class="center">
+    <img src="images/logo.png" alt="logo">
+    <h4>Login in before you continue.</h4>
+    <div ng-app="myApp" ng-controller="errCtrl">
+        <form id="Login" method="post">
+                <table id="maintable">
+                    <tr><td><label ng-hide="error" id="email_msg" class="err_msg"></label></td></tr>
+                    <tr><td style="width: 300px;"> <input placeholder="Email" ng-click="toggle()" type="text" name="uname" size="30" /></td> </tr>
+                    
+                    <tr><td><label ng-hide="error" id="pswd_msg" class="err_msg"></label></td></tr>
+                    <tr><td style="width: 300px;"> <input placeholder="Password" ng-click="toggle()" type="password" name="password" size="30"/></td></tr>
+                </table>
+                <p><input ng-click="submit()" type="submit" class="submit_buttom" name="Login" value="Login" /></p>
+        <p>Don't have an account yet? click <a href="SignUp.html">here</a> to sign up.</p>        
+        </form>
+    </div>
+    <div id="loading"></div>
+</section>
+<script type = "text/javascript"  src = "JSs/Home-r.js" ></script>
+<script type = "module"  src = "JSs/HomeRetrieve.js" ></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('errCtrl', function($scope) {
+
+        $scope.toggle = function() {
+            $scope.error = true;
+        }
+        $scope.submit = function() {
+            $scope.error = false;
+        }
+    });
+    </script>
+
+
+</body>
+</html>

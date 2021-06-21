@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html ng-app="studentApp" ng-cloak>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+<script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+</script>
+
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  background-color: rgb(189, 185, 185);
+}
+
+
+.bgimg-1 {
+  position: relative;
+  opacity: 0.65;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-image: url("images/3.jpg");
+  height: 30%;
+
+}
+
+section {
+  float: left;
+  width: 69%;
+  height: 510px;
+  background-color: rgb(189, 185, 185);
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+aside {
+  height: 66%;
+  width: 12%;
+  padding-left: 15px;
+  margin-left: 15px;
+  float: right;
+  background-color: lightgray;
+  border: 1px solid black;
+  text-align: center;
+  margin: 3px 9%;
+}
+
+.icon {
+  position: relative;
+  top: 10px;
+}
+
+a img {
+  width: 30px;
+  height: 30px;
+}
+
+a { 
+    color: blue;
+}
+a:hover {
+  color: blueviolet;
+}
+
+.link {
+    position: relative;
+    border: 1px solid black;
+    top: 18px;
+    width: 200px;  
+    height: 50px;  
+    display: inline-block;
+    background-color: white;
+}
+
+.link:hover {
+  border: 3px solid rgb(255, 255, 255);
+}
+
+h1 {
+  position: relative;
+  left: 30px;
+}
+
+.classBlock {
+  display: inline-block;
+  position: flex;
+  margin-left: 1%;
+  background-color: white;
+  width: 150px;
+  height:150px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.classBlock:hover {
+  background-color: rgb(77, 76, 76);
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+
+.searchClassesBar {
+  position: flex;
+  margin-left: 1%;
+}
+
+.classes {
+  width: 90%;
+  height: 480px;
+  margin: 3px 10%;
+  border: 1px solid black;
+}
+
+.newPosts {
+  width: 90%;
+  height: 180px;
+  margin: 6px 10%;
+  border: 1px solid black;
+}
+
+.classInfo {
+  margin: 6px 3%;
+}
+
+.classOptions {
+  margin: 6px 3%;
+}
+
+#Tinfo{
+  width: 270px;
+  margin: 0px;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+#PostInfo {
+  position: absolute;
+  right: 600px;
+  top: 300px;
+  height: 450px;
+  width: 720px;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+.postBlocks {
+  display: inline-block;
+  margin: 3px;
+  width: 300px;
+  height:150px;
+  border: 1px solid black;
+  background-color: #fff;
+  overflow-x: auto;
+  text-align: center;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.apply_button:hover {
+  background-color: rgb(77, 76, 76);
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+}
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con 
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(gifs/1.gif) center no-repeat #fff;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+         display: none;
+      }
+</style>
+
+</head>
+<body ng-controller="StudentSide">
+<div class="se-pre-con"></div>
+<header class="bgimg-1">
+    <span><img src="images/logo.png" alt="logo"></span>
+    <div class="caption">
+        <span class="border">Welcome back {{userData.FirstName + ' ' + userData.LastName}}</span>
+    </div>
+</header>
+
+<section>
+<div class="classes">
+  <h1>Courses you are taking:</h1>
+  <p class="classOptions">
+    Current Class: 
+    <select name="Current" ng-model="ViewedClass" ng-change="changeOptions()" data-ng-options="class as class.class_name for class in classesData track by class.class_id">
+      <option value="">---Select Option---</option>
+    </select>
+  </p>
+  <div id="myList" ng-hide="HideBlocks">
+
+  </div>
+  <div ng-show="ShowClass" class="classInfo">
+    <h3 id="classTitle"></h3>
+    <div id="Tinfo">
+      <h4>Teacher Information</h4>
+      <div>
+         <p>Teacher Name: {{CurrentTeacherData.Fname + ' ' + CurrentTeacherData.Lname}}</p>
+         <p>email: {{CurrentTeacherData.email}}</p>
+         <p>phone number: {{ViewedClass.phone}}</p>
+         <p>credentials: {{ViewedClass.credentials}} </p>
+      </div>
+    </div>
+
+    
+    <div id="PostInfo">
+      <h4>Posts in this class: </h4>
+      <div id="AllPosts">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="newPosts">
+  <div class="searchClassesBar">
+    <h3>Search for more classes: <input ng-model="SearchClass" ng-change="searchText()" placeholder="Class Id" type="text" name="classSearch" size="30" /></h3>
+    <table style="width: 600px;" ng-hide="HideTable">
+      <tr>
+        <th style="width: 25%;">class_id</th>
+        <th style="width: 25%;">teacher_name</th>
+        <th style="width: 25%;">email</th>
+        <th style="width: 25%;">phone</th>
+      </tr>
+      <tr id="searchInfo">
+
+      </tr>
+    </table>
+    <input class="apply_button" ng-click="apply_class()" value="Apply" name="Apply" type="submit"> <p style="color: red;" id="enroll_msg"></p>
+  </div>
+</div>
+</section>
+
+<aside>
+    <span class="icon"><img width="100" ng-src="{{currentAvatar}}" alt = "Profile picture" /></br>{{userData.FirstName}}</span></br>
+    <a href="index.html">log out</a>
+    <p></p>
+    <div class="link"><a href="EditInformation.html"><img src="images/information.png">Edit information</a></div>  
+</aside>
+<script type="module" src="JSs/StudentAngular.js"></script>
+</body>
+</html>

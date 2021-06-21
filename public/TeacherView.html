@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html ng-app="teacher" ng-cloak>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <Title>Signup Page </Title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+   
+       
+   <style>
+      [ng\:cloak], [ng-cloak], .ng-cloak {
+         display: none;
+      }
+   </style>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script>
+    $(window).load(function() {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");;
+    });    
+    </script>
+
+
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+
+
+    <script defer src="/__/firebase/init.js?useEmulator=false"></script>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="teachersPet.css">
+
+         <!--controller set up-->
+         <script type="module" src="JSs/TeacherAngular.js"></script>
+
+  </head>
+  <body class="bg" ng-controller="TeacherView">
+    <div id="message"></div>
+      <div class="se-pre-con"></div>
+      <div class="Viewer">
+          <h1>Teacher's View</h1>
+      </div>
+
+
+      <!-- Nav overlay can be copied to all other pages -->
+      <div class="navOverlay">
+         <ul class="navbar">
+            <li class="navEl"><a href="firstclass.html">Create Class</a></li>
+            <li class="navEl">
+               Current Class: <select name="Current" ng-model="ViewedClass" data-ng-options="class as class.class_name for class in classesData track by class.class_id"></select>
+            </li>
+            <li class="navE1">Class Id: {{ViewedClass.class_id}} Give to students</li>
+            <li class="navE1"><a href="#" id="logout">Logout</a></li>
+         </ul>
+      </div>
+
+
+      <h1 class="ClassName">{{ViewedClass.class_name}}</h1>
+      
+      <div class="right">
+         <!-- Teacher info edit section -->
+         <section id="Tinfo">
+            <h2>Teacher Information</h2>
+            <div>
+               <p>Teacher Name: {{userData.FirstName + ' ' + userData.LastName}}</p>
+               <p>email:</p>
+               <input ng-click="toggle_info()" placeholder="Email" type="text" id="email" name="email" size="20" ng-model="userData.email"/><br>
+               <p>phone number</p>
+               <input ng-click="toggle_info()" placeholder="PhoneNumber" type="text" id="Pnum" name="Pnum" size="20" ng-model="ViewedClass.phone"/><br>
+               <p>credentials</p>
+               <textarea placeholder="Your Credentials" name="credent" rows="5" cols="30" ng-model="ViewedClass.credentials"></textarea><br>
+            </div>
+            <button  ng-click="Edit()">Save Changes</button>
+         </section>
+
+         <section id="BtnList">
+         <!-- Show Attendance -->
+            <button class="OBtn" id="att" ng-click="ShowHideShow()">Show Attendance</button>
+            <div ng-hide="isHiddenShow">
+               Viewed Day: <select name="Day" ng-model="AttendenceDay" data-ng-options="day as day.date for day in DateList | filter:{'class_id': ViewedClass.class_id}"></select>
+               <div ng-repeat="day in Days | filter :{'class_id': ViewedClass.class_id} | filter:{'date': AttendenceDay.date}">
+                  <div class = "Awaiting">
+                     <label>
+                        {{day.FirstName + ' ' + day.LastName}} attended:
+                        <p>{{day.attended}}</p>
+                     </label>
+                  </div>
+               </div>
+            </div>
+         <!-- attendance button -->
+            <button class="OBtn" id="att" ng-click="ShowHideAtt()">Take attendance</button>
+            <div ng-hide="isHiddenAtt">
+               <h5>Take attendance for: {{CurrentDay}}</h5>
+               <div ng-repeat="student in students | filter :{'class_id': ViewedClass.class_id}">
+                  <div class = "Awaiting">
+                     <label>
+                        {{student.FirstName + ' ' + student.LastName}}:
+                        <select ng-model="student.attended">
+                           <option value='true'>Present</option>
+                           <option value="false">Absent</option>
+                        </select>
+                     </label>
+                  </div>
+               </div>
+               <button  ng-click="Mark()">Submit</button>
+            </div>
+
+            <button class="OBtn" id="att" ng-click="ShowHideAwait()">Awaiting Students</button>
+            <div ng-hide="isHiddenAwait">
+               <div ng-repeat="student in awaiting | filter :{'class_id': ViewedClass.class_id}">
+                  <div class = "Awaiting">
+                     <p>{{student.FirstName + ' ' + student.LastName}}</p>
+                     <button type="button" ng-click = "Accept(student)">Accept</button>
+                     <button type="button" ng-click = "reject(student)">Delete</button>
+                  </div>
+               </div>
+            </div>
+
+            <button class="OBtn" id="att" ng-click="ShowHide()">Inventory</button>
+            <div ng-hide="isHidden">
+               <div ng-repeat="item in items | filter :{'class_id': ViewedClass.class_id}">
+                  <input type="text" value="item.item_name" ng-model="item.item_name" ng-required/> amount: <input class="inventory" type="number" value="item.amount" ng-model="item.amount" ng-required/>
+                  <button type="button" ng-click= "remove(item)" >Delete</button>
+               </div>
+               <div>
+                  <button ng-click="Add()">Add</button>                             <button  ng-click="Save()">Save Changes</button>
+               </div>
+            </div>
+
+         </section>
+      </div>
+
+      <div class="left">
+      <!-- Student Section -->
+         <section id="StudentSection">
+            <h2>Students</h2>
+            <div ng-repeat="student in students | filter :{'class_id': ViewedClass.class_id}">
+               <button class="StudentBtn" data-ng-click="student.active = !student.active" data-ng-class="{'active': student.active}">{{student.FirstName + ' ' + student.LastName}}</button>
+               <div class="panel">
+                  <img width="100" ng-src="{{student.avatar}}" alt = "Profile picture" />
+                  <p>Email: {{student.email}}</p>
+                  <button type="button" ng-click= "expel(student)" >Remove</button>
+               </div>
+            </div>
+         </section>
+         
+         <!-- Post section -->
+         <section id="TPost">
+            <h2>Posts</h2>
+            <div id="PostScroll">
+               <div class=POSTS ng-repeat="post in posts | filter :{'class_id': ViewedClass.class_id}">
+                  <p><h5>{{post.title}}</h5>Posted: {{post.date | date: 'yyyy-MM-dd'}}</p>
+                  <p>{{post.desc}}</p>
+               </div>
+            </div>
+            <h2>Create Post</h2>
+            <div>
+               <form id="postForm">
+                  <input placeholder="Title" type="text" id="title" name="title" size="45" />
+                  </br>
+                  <textarea name="post" id="post" rows="4" cols="50" placeholder="Enter post here..."></textarea>
+                  <input id="postbtn" value="Create Post" name="Post" type="submit" data-ng-click="Post()">
+               </form>
+            </div>
+         </section>
+      </div>
+
+
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.8.2/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+        
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    
+
+        <!-- Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap.js" integrity="sha512-3z5zbCPEG7DvKKz46yvPmKL+w+UDfwY0f2YWFVIwBb+2Y4E23jTZHZxG+naAiTllvMNQAhapPDKGHBT7V3fQOA==" crossorigin="anonymous"></script>
+
+
+
+        <!--Universal signout-->
+         <script type="module" src="JSs/SignOut.js"></script>
+
+  </body>
+</html>
